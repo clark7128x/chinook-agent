@@ -1,0 +1,32 @@
+database:
+  path: data/Chinook_Sqlite.sqlite   # перекривається CHINOOK_DB
+
+sql:
+  max_rows: 100                      # LIMIT, який додається, і межа рядків у відповіді
+  timeout_s: 5.0                     # таймаут виконання запиту
+
+agent:
+  max_steps: 8                       # крок = один виклик моделі
+
+llm:
+  base_url: ""                       # перекривається LLM_API_BASE
+  model: null                        # перекривається LLM_MODEL
+  temperature: 0.0
+  max_output_tokens: 800
+  timeout_s: 60
+  max_retries: 3
+  retry_base_delay_s: 1.0
+  retry_max_delay_s: 20.0
+  price_per_1m_input: null
+  price_per_1m_output: null
+
+build:
+  seed: 17
+
+eval:
+  dataset: data/tasks.jsonl
+  levels: [single, join, aggregate]
+  results_dir: results
+  call_log: results/calls.jsonl
+  value_abs_tol: 0.005
+  value_rel_tol: 0.000001
